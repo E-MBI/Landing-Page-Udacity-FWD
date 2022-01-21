@@ -5,27 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landing Page</title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="css/all.min.css" />
     <!-- Load Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap"
       rel="stylesheet"
     />
+    <!-- Animated Css  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- Load Styles -->
     <link rel="stylesheet" href="css/main.css" type="text/css" />
   </head>
-
   <body>
     <!-- HTML Follows BEM naming conventions 
   IDs are only used for sections to connect menu achors to sections -->
     <header class="page__header">
       <nav class="navbar__menu">
         <!-- Navigation starts as empty UL that will be populated with JS -->
-        <ul id="navbar__list"></ul>
+        <ul
+          id="navbar__list"
+          class="animate__animated animate__bounceInLeft"
+        ></ul>
       </nav>
     </header>
     <main>
       <header class="main__hero">
-        <input type="button" id="btn" value="Adding New Section" />
+        <input
+          class="animate__animated animate__bounceInDown"
+          type="button"
+          id="btn"
+          value="Add New Section"
+        />
         <h1>Landing Page</h1>
       </header>
       <!-- Each Section has an ID (used for the anchor) and 
@@ -34,10 +48,28 @@
     The first section is set to active class by default -->
 
       <!-- I delete this content becouse i well create it with js dom -->
+
+      <!-- create button backto top -->
+
+      <button class="button">
+        <i class="fas fa-angle-double-up"></i>
+      </button>
     </main>
     <footer class="page__footer">
       <p>&copy Udacity</p>
     </footer>
+
+    <!-- wow >> main >>js  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+      integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- wow.js>>Documentation -->
+    <script>
+      new WOW().init();
+    </script>
     <!-- main file of js  -->
     <script src="js/main.js"></script>
   </body>

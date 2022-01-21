@@ -33,7 +33,7 @@
 
 let creatingSection = (counter) => {
   let content = `
-<section id="section ${counter}" data-nav="Section ${counter}" class="your-active-class">
+<section  id="section ${counter}" data-nav="Section ${counter}" class="your-active-class">
     <div class="landing__container">
         <h2>Section ${counter}</h2>
             
@@ -64,7 +64,7 @@ let creatingSection = (counter) => {
 let myul = document.querySelector("#navbar__list");
 let createNav = (x) => {
   let list_link = document.createElement("li");
-  list_link.innerHTML = `<a href="#${x}"   class="menu__link"> ${x} </a> `;
+  list_link.innerHTML = `<a href="#${x}" class="menu__link"> ${x} </a> `;
   myul.append(list_link);
 };
 
@@ -84,6 +84,8 @@ let btn = document.getElementById("btn");
 btn.addEventListener("click", () => {
   creatingSection(i);
   i++;
+  //callback of observer section to add class color and highlighte of link on nav bar
+  observsecion();
 });
 
 //css of bottom
@@ -93,12 +95,14 @@ padding: 18px;
     border: none;
     width: 18%;
     border-radius: 2%;  
-    background-image: linear-gradient(
--45deg
-, #009688, #673ab7);`;
+    background-image: linear-gradient(-45deg, #009688, #673ab7);
+    transition:all 0.7s;
+    cursor: pointer;
+    `;
 
 // add activ class foreach link
-let li_Active = document.querySelectorAll(" li .menu__link");
+let li_Active = document.querySelectorAll(" li a");
+//loop for click on link add active class and remov form other links
 li_Active.forEach(function (el) {
   el.addEventListener("click", () => {
     li_Active.forEach((ele) => {
@@ -109,8 +113,32 @@ li_Active.forEach(function (el) {
 });
 
 // Add class 'active' to section when near top of viewport
-
 // Scroll to anchor ID using scrollTO event
+
+let backbtn = document.querySelector("main > .button ");
+
+//create FUNCTION to show and hidden button
+function scrolldown() {
+  if (window.pageYOffset > 900) {
+    backbtn.style.display = "block";
+  }
+
+  //show the button
+  else {
+    backbtn.style.display = "none";
+  } //hidden the button
+}
+//add event when user scroll on page
+window.addEventListener("scroll", scrolldown);
+
+//create FUNCTION btn scroll to top page with setTimeout to delay excuting action after <</ 700 mls >>
+function BackTotop() {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 700);
+}
+//add event when user click on the button
+backbtn.addEventListener("click", BackTotop);
 
 /**
  * End Main Functions
@@ -121,5 +149,37 @@ li_Active.forEach(function (el) {
 // Build menu
 
 // Scroll to section on link click
-
 // Set sections as active
+
+// get element who active it
+//when window scrolling ,the section that is insertview will light and it's link into navbar will light
+
+window.addEventListener("scroll", () => {
+  observsecion();
+});
+//this function detected the section if into view or not  and add the active class into evrysection
+function observsecion() {
+  let sections = document.querySelectorAll("section");
+  sections.forEach((section) => {
+    if (
+      section.getBoundingClientRect().top >= 0 &&
+      section.getBoundingClientRect().top <= 250
+    ) {
+      var sec_id = "#" + section.getAttribute("id");
+      section.classList.add("sec_color");
+      lightlink(sec_id);
+    } else {
+      section.classList.remove("sec_color");
+    }
+  });
+}
+
+//this function detected the section if into view or not  and add the active class into his link >>
+function lightlink(sec) {
+  let navLinks = document.querySelectorAll("ul li a");
+  for (let i = 0; i < navLinks.length; i++) {
+    navLinks[i].classList.remove("active_link");
+  }
+  var li_Act = document.querySelector(`ul li a[href="${sec}"]`);
+  li_Act.classList.add("active_link");
+}
