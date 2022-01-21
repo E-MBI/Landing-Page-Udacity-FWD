@@ -32,4 +32,4 @@ Open `js/app.js` if you want to modify or start building more functions.
 
 when section inserview of screen user ,will light and his link is hight light .
 
-## I Used WoW.JS liabirary & animate.css to adding animation for my page
+ I Used WoW.JS liabirary & animate.css to adding animation for my page
