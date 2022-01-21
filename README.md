@@ -23,9 +23,7 @@ Open `js/app.js` if you want to modify or start building more functions.
 - nav bar
 
   > > ul
-  > >
   > > > li
-  > > >
   > > > > a
 
 - button to add new section
@@ -33,3 +31,5 @@ Open `js/app.js` if you want to modify or start building more functions.
 ## Sections
 
 when section inserview of screen user ,will light and his link is hight light .
+
+## I Used WoW.JS liabirary & animate.css to adding animation for my page
